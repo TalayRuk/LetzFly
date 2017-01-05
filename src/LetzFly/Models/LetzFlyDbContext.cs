@@ -9,6 +9,10 @@ namespace LetzFly.Models
 {
     public class LetzFlyDbContext : IdentityDbContext<User, UserRole, string>
     {
+        //protected override void OnConfiguring(DbContextOptionsBuilder options)
+        //{
+        //    options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=LetzFly;integrated security=True");
+        //}
         public LetzFlyDbContext(DbContextOptions options) :base(options)
         {
             //leave this open 
