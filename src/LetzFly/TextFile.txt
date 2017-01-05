@@ -3,5 +3,16 @@
 .redfont
 div asp-validation-summary
 
+*
+Account Index Once Login show what the user can do 
+for example: Crud for blog
+
+Create Questions & Answer forum?
+Add Comment to the blog 
+
+Add Product to the site 
+
 
 **Error Register wasn't working b/c at the link to Post to Controller didn't have Account there!!
+
+

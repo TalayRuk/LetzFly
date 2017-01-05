@@ -46,7 +46,7 @@ namespace LetzFly.Controllers
         {
             var user = new User
             {
-                UserName = model.UserName,
+                //UserName = model.UserName,
                 FullName = model.FullName,
                 Email = model.Email
             };
@@ -97,7 +97,7 @@ namespace LetzFly.Controllers
         {
             //SignInManager has the asynchronouse method SignOutAsync() 
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Index");
         }
     }
 }
