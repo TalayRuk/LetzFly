@@ -20,6 +20,6 @@ namespace LetzFly.Models
         }
 
         public DbSet<Subscriber> Subscribers { get; set; }
-        public DbSet<Newsletter> Newsletters { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
     }
 }
