@@ -10,30 +10,39 @@
 
     <h2>Register a new User</h2>
     <hr />
-    <h4>**Note** Password requires at least 6 characters, a capital letter, a digit, and a special character.</h4>
-    <br /> 
+
     @using (Html.BeginForm("Register", "User", FormMethod.Post))
     {
-        @Html.LabelFor(m => m.FullName)
+        <table>
+            <tr>
+                <td>@Html.LabelFor(m => m.FullName)</td>
+                <td>@Html.TextBoxFor(m => m.FullName)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.UserName)</td>
+                <td>@Html.TextBoxFor(m => m.UserName)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Email)</td>
+                <td>@Html.TextBoxFor(m => m.Email)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Password)</td>
+                <td>@Html.TextBoxFor(m => m.Password)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.ConfirmPassword)</td>
+                <td>@Html.TextBoxFor(m => m.ConfirmPassword)</td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+
+            <tr>
+                <td><input type="submit" value="Register" class="btn btn-primary" /></td>
+            </tr>
+        </table>
+        <h4 class="redFont">**Note** Password requires at least 6 characters including a capital letter, a digit, and a special character.</h4>
         <br />
-        @Html.TextBoxFor(m => m.FullName)
-        <br /><br />
-        @Html.LabelFor(m => m.UserName)
-        <br />
-        @Html.TextBoxFor(m => m.UserName)
-        <br /><br />
-        @Html.LabelFor(m => m.Email)
-        <br />
-        @Html.TextBoxFor(m => m.Email)
-        <br /><br />
-        @Html.LabelFor(m => m.Password)
-        <br />
-        @Html.PasswordFor(m => m.Password)
-        <br /><br />
-        @Html.LabelFor(m => m.ConfirmPassword)
-        <br />
-        @Html.PasswordFor(m => m.ConfirmPassword)
-        <br /><br />
-        <input type="submit" value="Register" class="btn btn-primary" />
+        <div asp-validation-summary="All"></div>
     }
 </div>

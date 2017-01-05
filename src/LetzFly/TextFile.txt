@@ -1,0 +1,3 @@
+﻿Need to add css
+.redfont
+div asp-validation-summary
