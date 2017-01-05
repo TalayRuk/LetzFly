@@ -5,7 +5,7 @@ namespace LetzFly.ViewModels
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "Fist&Last Name")]
+        [Display(Name = "FullName")]
         public string FullName { get; set; }
 
         [Required]

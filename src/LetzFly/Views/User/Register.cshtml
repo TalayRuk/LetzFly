@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container">
+
+    @using LetzFly.ViewModels
+    @model RegisterViewModel
+
+    <h2>Register a new User</h2>
+    <hr />
+    <h4>**Note** Password requires at least 6 characters, a capital letter, a digit, and a special character.</h4>
+    <br /><br />
+    @using (Html.BeginForm("Register", "User", FormMethod.Post))
+    {
+        @Html.LabelFor(m => m.FullName)
+        <br />
+        @Html.TextBoxFor(m => m.FullName)
+        <br /><br />
+        @Html.LabelFor(m => m.UserName)
+        <br />
+        @Html.TextBoxFor(m => m.UserName)
+        <br /><br />
+        @Html.LabelFor(m => m.Email)
+        <br />
+        @Html.TextBoxFor(m => m.Email)
+        <br /><br />
+        @Html.LabelFor(m => m.Password)
+        <br />
+        @Html.PasswordFor(m => m.Password)
+        <br /><br />
+        @Html.LabelFor(m => m.ConfirmPassword)
+        <br />
+        @Html.PasswordFor(m => m.ConfirmPassword)
+        <br /><br />
+        <input type="submit" value="Register" class="btn btn-primary" />
+    }
+</div>
