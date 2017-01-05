@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace LetzFly.Models
 {
-    public class UserDbContext : IdentityDbContext<User, UserRole, string>
+    public class LetzFlyDbContext : IdentityDbContext<User, UserRole, string>
     {
-        public UserDbContext(DbContextOptions options) :base(options)
+        public LetzFlyDbContext(DbContextOptions options) :base(options)
         {
             //leave this open 
         }

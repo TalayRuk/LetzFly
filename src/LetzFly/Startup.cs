@@ -34,10 +34,10 @@ namespace LetzFly
         {
             // Add framework services.
             services.AddEntityFramework()
-                            .AddDbContext<UserDbContext>(options =>
+                            .AddDbContext<LetzFlyDbContext>(options =>
                               options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
             services.AddIdentity<User, UserRole>()
-                .AddEntityFrameworkStores<UserDbContext>()
+                .AddEntityFrameworkStores<LetzFlyDbContext>()
                 .AddDefaultTokenProviders();
             //Add Mvc 
             services.AddMvc();

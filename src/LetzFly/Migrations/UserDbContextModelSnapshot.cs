@@ -7,7 +7,7 @@ using LetzFly.Models;
 
 namespace LetzFly.Migrations
 {
-    [DbContext(typeof(UserDbContext))]
+    [DbContext(typeof(LetzFlyDbContext))]
     partial class UserDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

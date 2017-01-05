@@ -15,12 +15,12 @@ namespace LetzFly.Controllers
     public class AccountController : Controller
     {
         // GET: /<controller>/
-        private readonly UserDbContext _db;
+        private readonly LetzFlyDbContext _db;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly RoleManager<UserRole> _roleManager;
 
-        public AccountController(UserManager<User> userManger, SignInManager<User> signInManager, RoleManager<UserRole> roleManager, UserDbContext db)
+        public AccountController(UserManager<User> userManger, SignInManager<User> signInManager, RoleManager<UserRole> roleManager, LetzFlyDbContext db)
         {
             _userManager = userManger;
             _signInManager = signInManager;
@@ -29,13 +29,9 @@ namespace LetzFly.Controllers
 
         }
 
-        [Authorize]
+        
         public IActionResult Index()
         {
-            var user = _userManager.GetUserAsync
-                         (HttpContext.User).Result;
-
-            ViewBag.Message = $"Welcome {user.FullName}!";
             return View();
         }
 
