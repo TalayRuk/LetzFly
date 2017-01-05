@@ -83,13 +83,13 @@ namespace LetzFly.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var result = _signInManager.PasswordSignInAsync
-                (model.UserName, model.Password,
-                  model.RememberMe, false).Result;
+                Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, isPersistent: false, lockoutOnFailure: false);
+                //SigninAsync method to sign a user in w/their credentials. 
+                //isPersistent set to true mean if not log out, it'll stay log in even if the browser is closed
 
                 if (result.Succeeded)
                 {
@@ -100,6 +100,15 @@ namespace LetzFly.Controllers
             }
 
             return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> LogOff()
+        {
+            //SignInManager has the asynchronouse method SignOutAsync() 
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login", "Account");
         }
     }
 }
