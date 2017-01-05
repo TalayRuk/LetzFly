@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container">
+
+    @using LetzFly.ViewModels
+    @model LoginViewModel
+
+    <h2>Login</h2>
+    <hr />
+
+    @using (Html.BeginForm("Login", "User", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td>@Html.LabelFor(m => m.UserName)</td>
+                <td>@Html.TextBoxFor(m => m.UserName)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Password)</td>
+                <td>@Html.TextBoxFor(m => m.Password)</td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <td><input type="submit" value="Login" class="btn btn-primary" /></td>
+            </tr>
+        </table>
+        <h4 class="redFont">All fields are required</h4>
+    }
+</div>
