@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace LetzFly.Models
 {
-    [Table("Newsletters")]
-    public class Newsletter
+    [Table("Blogs")]
+    public class Blog
     {
         [Key]
-        public int Id { get; set; }
+        public int BlogId { get; set; }
         public string Title { get; set; }
+        public string Author { get; set; }
         public string Image_url { get; set; }
 
-        [MinLength(10)]
-        [MaxLength(5000)]
-        public string Description { get; set; }
+        [DataType(DataType.MultilineText)]
+        public string Text_body { get; set; }
         public virtual User User { get; set; }
 
     }
