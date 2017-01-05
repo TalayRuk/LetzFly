@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using LetzFly.Models;
 using Microsoft.AspNetCore.Identity;
 using LetzFly.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -28,8 +29,13 @@ namespace LetzFly.Controllers
 
         }
 
+        [Authorize]
         public IActionResult Index()
         {
+            var user = _userManager.GetUserAsync
+                         (HttpContext.User).Result;
+
+            ViewBag.Message = $"Welcome {user.FullName}!";
             return View();
         }
 
@@ -37,6 +43,7 @@ namespace LetzFly.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model)
@@ -93,7 +100,7 @@ namespace LetzFly.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index");
                 }
 
                 ModelState.AddModelError("", "Invalid login!");
