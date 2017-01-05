@@ -18,5 +18,8 @@ namespace LetzFly.Models
         {
             base.OnModelCreating(builder);
         }
+
+        public DbSet<Subscriber> Subscribers { get; set; }
+        public DbSet<Newsletter> Newsletters { get; set; }
     }
 }
