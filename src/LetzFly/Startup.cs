@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using LetzFly.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace LetzFly
 {
@@ -17,7 +20,7 @@ namespace LetzFly
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile("appsettings.json")
                 //.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
@@ -30,21 +33,30 @@ namespace LetzFly
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddEntityFramework()
+                            .AddDbContext<UserDbContext>(options =>
+                              options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+            services.AddIdentity<User, UserRole>()
+                .AddEntityFrameworkStores<UserDbContext>()
+                .AddDefaultTokenProviders();
+            //Add Mvc 
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseDeveloperExceptionPage();
+            //    app.UseBrowserLink();
+            //}
+            //else
+            //{
+            //    app.UseExceptionHandler("/Home/Error");
+            //}
+
+            app.UseIdentity();
 
             app.UseStaticFiles();
 
@@ -54,6 +66,12 @@ namespace LetzFly
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync("Sorry, you don't have access to this web page. You must log in first.");
+            });
+
         }
     }
 }
