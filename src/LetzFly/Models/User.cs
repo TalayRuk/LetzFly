@@ -8,6 +8,8 @@ namespace LetzFly.Models
 {
     public class User : IdentityUser
     {
+        //User class inherits from IdentityUser base class (Microsoft.AspNetCore.Identity.EntityFrameworkCore namespace). The IdentityUser base class contains basic user details such as UserName, Password and Email. 
+        //To capture FullName of a user, I add it as additional properties 
         public string FullName { get; set; }
     }
 }
