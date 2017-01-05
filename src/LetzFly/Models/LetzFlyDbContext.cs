@@ -19,7 +19,10 @@ namespace LetzFly.Models
             base.OnModelCreating(builder);
         }
 
-        public DbSet<Subscriber> Subscribers { get; set; }
         public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Subscriber> Subscribers { get; set; }
+        
     }
 }

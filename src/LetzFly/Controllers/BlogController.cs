@@ -13,7 +13,6 @@ namespace LetzFly.Controllers
     public class BlogController : Controller
     {
         // GET: /<controller>/
-        {
         private LetzFlyDbContext _db;
 
         public BlogController(LetzFlyDbContext db)
@@ -33,4 +32,4 @@ namespace LetzFly.Controllers
         }
     }
 }
-}
+
