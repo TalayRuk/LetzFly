@@ -21,7 +21,6 @@ namespace LetzFly
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json")
-                //.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -64,12 +63,12 @@ namespace LetzFly
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Account}/{action=Index}/{id?}");
             });
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Sorry, you don't have access to this web page. You must log in first.");
+                await context.Response.WriteAsync("Sorry, Error has occured.");
             });
 
         }

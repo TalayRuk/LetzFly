@@ -1,3 +1,7 @@
-﻿Need to add css
+﻿**Need to add 
+*css
 .redfont
 div asp-validation-summary
+
+
+**Error Register wasn't working b/c at the link to Post to Controller didn't have Account there!!
